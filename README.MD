@@ -30,8 +30,10 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-## Run locally
-2. python convertmany.py
+Run locally
+``` bash
+python convertmany.py
+```
 
 ## OR ELSE
 - GO TO DIST/ DOWNLOAD .exe and run convertmany.exe
