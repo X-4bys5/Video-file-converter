@@ -32,4 +32,4 @@ Run locally
 2. python convertmany.py
 
 ## OR ELSE
-- GO TO DIST/ DOWNLOAD .exe and run# Video-file-converter
+- GO TO DIST/ DOWNLOAD .exe and run convertmany.exe
