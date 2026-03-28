@@ -24,9 +24,9 @@ This tool is a wrapper for FFmpeg. You must have FFmpeg installed and added to y
 
 ## SETUP
 1. Clone & install
-git clone <your-repo-url>
-python -m venv venv
-venv\Scripts\activate
+"git clone <your-repo-url>"
+"python -m venv venv"
+"venv\Scripts\activate"
 
 ## Run locally
 2. python convertmany.py
