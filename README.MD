@@ -1,39 +1,37 @@
-# Video-file-converter
-A lightweight Python desktop application that automates the conversion of various video formats into web-standard MP4 files.
+# video-Converter
 
+a desktop app i made to batch convert video files to mp4. i needed to convert a bunch of mkv files and doing them one by one was annoying so i built this.
 
-## KEY FEATURES
+it tries a fast copy first (no re-encoding, way faster), and if that fails it falls back to full re-encoding with h264/aac.
 
-1. Batch Processing: Select and queue multiple files at once using a native file explorer.
-2. Smart Encoding Logic: Attempts a "Fast Copy" first to save time; automatically switches to full re-encoding (H.264/AAC) only if the copy fails.
-3. Non-Blocking UI: Utilizes Python’s threading library to ensure the GUI remains responsive while FFmpeg handles heavy processing in the background.
-4. Cross-Platform Compatibility: Handles .mkv, .avi, .mov, .webm, and more.
+## how it works
 
+- pick one or multiple video files
+- it tries to copy the streams directly into mp4 first
+- if that fails it re-encodes with ffmpeg
+- shows progress while its running so the ui doesnt freeze
 
-## TECH STACK
+## stack
 
-Language: Python 3.x 
-GUI Framework: Tkinter 
-Core Engine: FFmpeg (via subprocess) 
-Packaging: PyInstaller (for .exe generation)
+- python + tkinter for the gui
+- ffmpeg for the actual conversion (called via subprocess)
+- pyinstaller to build the exe
 
+## requirements
 
-## PREREQUISITES
-This tool is a wrapper for FFmpeg. You must have FFmpeg installed and added to your System PATH for the conversion to work.
+you need ffmpeg installed and in your PATH, get it from https://ffmpeg.org/download.html
 
-
-## SETUP
-1. Clone & install
-``` bash
-git clone <your-repo-url>
-python -m venv venv
-venv\Scripts\activate
+## run it
 ```
-
-Run locally
-``` bash
+git clone https://github.com/X-4bys5/Video-file-converter.git
+cd Video-file-converter
 python convertmany.py
 ```
+or just download the exe from the dist folder if you dont want to deal with python
 
-## OR ELSE
-- GO TO DIST/ DOWNLOAD .exe and run convertmany.exe
+## known issues
+```
+- no progress bar showing percentage, just shows which file its on
+- if ffmpeg isnt in PATH it crashes with a confusing error
+- doesnt show estimated time remaining
+```
