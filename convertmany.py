@@ -21,16 +21,12 @@ def process_video_file(input_file):
         output_file = os.path.join(folder, f"{name}.mp4")
 
     try:
-        # --- THIS IS THE KEY CHANGE ---
-        # The '-loglevel', 'error' arguments have been removed to show full progress
-        command = ["ffmpeg", "-i", input_file, "-c", "copy", output_file]
+        command = ["ffmpeg", "-i", input_file, "-c", "copy", output_file]  # try fast copy first no re-encoding just remux into mp4 way quicker
         subprocess.run(command, check=True)
     except subprocess.CalledProcessError:
         print(f"Fast copy failed for {filename}, re-encoding...")
         try:
-            # --- THIS IS THE KEY CHANGE ---
-            # The '-loglevel', 'error' arguments have been removed here as well
-            command = ["ffmpeg", "-i", input_file, "-c:v", "libx264", "-c:a", "aac", output_file]
+            command = ["ffmpeg", "-i", input_file, "-c:v", "libx264", "-c:a", "aac", output_file] # fast copy failed streams incompatible fall back to full re-encode with h264/aac
             subprocess.run(command, check=True)
         except subprocess.CalledProcessError:
             print(f"ERROR: Complete conversion failure for: {filename}")
